@@ -1,13 +1,9 @@
-module Day2 where
+module Solutions.Day2 where
 -- import Text.Regex.TDFA
 import Text.Regex
-import Control.Arrow
-import Control.Applicative
-import Control.Monad
-import Data.Maybe
 import Data.Function
-import Data.List
 import Data.List.Split
+import Helpers
 
 import Data.Map (Map)
 import qualified Data.Map as M
@@ -15,8 +11,6 @@ import qualified Data.Map as M
 sol :: String -> Bool
 sol = words >>> \[n, ch, p] -> checkCt n ch p
 
-counter :: (Ord a) => [a] -> Map a Int
-counter = (`zip` repeat 1) >>> M.fromListWith (+)
     
 checkCt n c p = let (a, b, ch) = mkTest n c
                  in M.lookup ch (counter p) & (fromMaybe 0 >>> liftA2 (&&) (>= a) (<= b))

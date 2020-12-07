@@ -25,6 +25,14 @@ dependencies:
 - containers
 - regex-compat
 - split
+- advent-of-code-api
+- transformers
+- text
+- mtl
+- time
+- haskeline
+- Cabal
+
 library:
   source-dirs: src
 

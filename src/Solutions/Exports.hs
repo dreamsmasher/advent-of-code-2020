@@ -1,0 +1,55 @@
+module Solutions.Exports 
+    (module Solutions.Day1
+    ,module Solutions.Day2
+    ,module Solutions.Day3
+    ,module Solutions.Day4
+    ,module Solutions.Day5
+    ,module Solutions.Day6
+    ,module Solutions.Day7
+    ,module Solutions.Day8
+    ,module Solutions.Day9
+    ,module Solutions.Day10
+    ,module Solutions.Day11
+    ,module Solutions.Day12
+    ,module Solutions.Day13
+    ,module Solutions.Day14
+    ,module Solutions.Day15
+    ,module Solutions.Day16
+    ,module Solutions.Day17
+    ,module Solutions.Day18
+    ,module Solutions.Day19
+    ,module Solutions.Day20
+    ,module Solutions.Day21
+    ,module Solutions.Day22
+    ,module Solutions.Day23
+    ,module Solutions.Day24
+    ,module Solutions.Day25
+    ) where
+
+import Solutions.Day1
+import Solutions.Day2
+import Solutions.Day3
+import Solutions.Day4
+import Solutions.Day5
+import Solutions.Day6
+import Solutions.Day7
+import Solutions.Day8
+import Solutions.Day9
+import Solutions.Day10
+import Solutions.Day11
+import Solutions.Day12
+import Solutions.Day13
+import Solutions.Day14
+import Solutions.Day15
+import Solutions.Day16
+import Solutions.Day17
+import Solutions.Day18
+import Solutions.Day19
+import Solutions.Day20
+import Solutions.Day21
+import Solutions.Day22
+import Solutions.Day23
+import Solutions.Day24
+import Solutions.Day25
+
+-- there has to be a better way LOL

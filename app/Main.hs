@@ -1,13 +1,15 @@
 module Main where
-
-import Lib
 import System.Environment
-import Day1
-import Day2
 
+import Advent
+import Solutions.Exports
+
+adventCLI :: IO ()
+adventCLI = do
+    return ()
 main :: IO ()
 main = do
-    n <- head <$> getArgs 
+    -- n <- head <$> getArgs 
     -- fp <- map read . lines <$> readFile "inputs/"<> show n <> ".txt"
     return ()
     -- let f = case n of

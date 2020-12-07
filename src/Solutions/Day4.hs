@@ -1,15 +1,12 @@
 {-# LANGUAGE LambdaCase #-}
-module Day4 where
+module Solutions.Day4 (is, both, day4Pt1, day4Pt2) where
 
-import Control.Applicative
-import Control.Arrow
-import Data.List
 import Data.Char (isDigit)
-import Data.Maybe (fromMaybe)
 import Data.List.Split (splitOn)
 import Text.Read (readMaybe)
+import Helpers
 
--- this is absolute spaghetti code but I was in a rush to finish 
+-- this is absol4ute spaghetti code but I was in a rush to finish 
 -- still didn't make the leaderboard :(
 -- didn't feel like dealing with Parsec today
 
@@ -25,10 +22,6 @@ data Passport = Byr Int
 -- convenience functions that should be in the prelude
 is :: Eq b => (a -> b) -> b -> a -> Bool
 is f b a = (f a == b)
-
-(?) :: Bool -> a -> a -> a
-(?) True = const
-(?) False = const id
 
 both :: (a -> Bool) -> (a -> Bool) -> a -> Bool
 both = liftA2 (&&)
@@ -81,12 +74,11 @@ validate =  flip elem >>> all >>> ($ words "byr iyr eyr hgt hcl ecl pid")
 validFields :: [String] -> Bool
 validFields = map (fst . toPair) >>> validate
 
-replace :: Eq a => a -> a -> ([a] -> [a])
-replace a b = map ((== a) >>= (? b))
-
-sol :: ([String] -> Bool) -> String -> Int
-sol f = splitOn "\n\n" >>> filter (not . null) >>> map (replace '\n' ' ') >>> filter (f . words) >>> length
+sol4 :: ([String] -> Bool) -> String -> Int
+sol4 f = getGroups >>> filter (f . lines) >>> length
+-- sol4 f = splitOn "\n\n" >>> filter (not . null) >>> map (replace '\n' ' ') >>> filter (f . words) >>> length
+-- smol refactoring
 
 day4Pt1, day4Pt2  :: String -> Int
-day4Pt1 = sol validFields
-day4Pt2 = sol (both validFields validInfo)
+day4Pt1 = sol4 validFields
+day4Pt2 = sol4 (both validFields validInfo)

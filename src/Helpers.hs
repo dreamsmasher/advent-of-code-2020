@@ -1,0 +1,50 @@
+{-# LANGUAGE TupleSections #-}
+module Helpers (
+    module Control.Arrow,
+    module Control.Applicative,
+    module Control.Monad,
+    module Data.Maybe,
+    module Data.List,
+    aocGreeter,
+    splitComma,
+    (?),
+    groupLines,
+    replace,
+    counter,
+    getGroups
+) where
+
+import Data.List.Split
+import Control.Arrow
+import Control.Applicative
+import Control.Monad
+import Data.Maybe
+import Data.List
+import qualified Data.Map as M
+
+
+(?) :: Bool -> a -> a -> a
+(?) True = const
+(?) False = const id
+
+replace :: Eq a => a -> a -> [a] -> [a]
+replace o n = map (\x -> (x == o) ? n $ x)
+
+counter :: (Ord a) => [a] -> M.Map a Int
+counter = (( , 1) <$>) >>> M.fromListWith (+)
+
+-- for problems like 2sum
+splitComma :: [Char] -> [[Char]]
+splitComma = splitOn ","
+
+-- for problems like papers please
+groupLines :: [Char] -> [[[Char]]]
+groupLines = map lines . splitOn "\n\n"
+
+-- for problems like airplane seats
+getGroups :: [Char] -> [[Char]]
+getGroups = map (filter (/= '\n')) . splitOn "\n\n"
+
+aocGreeter :: String
+aocGreeter = "Merry chrimbus!!!"
+
