@@ -1,7 +1,6 @@
 {-# LANGUAGE LambdaCase #-}
-{-# LANGUAGE MultiParamTypeClasses #-}
 
-module Solutions.Day5  where
+module Day5  where
 
 import Helpers hiding (partition)
 

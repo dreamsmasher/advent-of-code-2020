@@ -5,6 +5,7 @@ module Helpers (
     module Control.Monad,
     module Data.Maybe,
     module Data.List,
+    module Data.List.Split,
     aocGreeter,
     splitComma,
     (?),
@@ -13,7 +14,8 @@ module Helpers (
     counter,
     both,
     is,
-    getGroups
+    getGroups,
+    swap
 ) where
 
 import Data.List.Split
@@ -56,3 +58,5 @@ is f b a = (f a == b)
 aocGreeter :: String
 aocGreeter = "Merry chrimbus!!!"
 
+swap :: (a, b) -> (b, a)
+swap (a, b) = (b, a)
