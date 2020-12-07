@@ -1,5 +1,5 @@
 {-# LANGUAGE LambdaCase #-}
-module Solutions.Day4 (is, both, day4Pt1, day4Pt2) where
+module Solutions.Day4 (day4Pt1, day4Pt2) where
 
 import Data.Char (isDigit)
 import Data.List.Split (splitOn)
@@ -20,11 +20,6 @@ data Passport = Byr Int
               | Pid String deriving (Eq, Ord, Show)
               
 -- convenience functions that should be in the prelude
-is :: Eq b => (a -> b) -> b -> a -> Bool
-is f b a = (f a == b)
-
-both :: (a -> Bool) -> (a -> Bool) -> a -> Bool
-both = liftA2 (&&)
 
 hx :: String
 hx = ['0'..'9'] ++ ['a'..'f']
@@ -74,11 +69,11 @@ validate =  flip elem >>> all >>> ($ words "byr iyr eyr hgt hcl ecl pid")
 validFields :: [String] -> Bool
 validFields = map (fst . toPair) >>> validate
 
-sol4 :: ([String] -> Bool) -> String -> Int
-sol4 f = getGroups >>> filter (f . lines) >>> length
+sol :: ([String] -> Bool) -> String -> Int
+sol f = getGroups >>> filter (f . lines) >>> length
 -- sol4 f = splitOn "\n\n" >>> filter (not . null) >>> map (replace '\n' ' ') >>> filter (f . words) >>> length
 -- smol refactoring
 
 day4Pt1, day4Pt2  :: String -> Int
-day4Pt1 = sol4 validFields
-day4Pt2 = sol4 (both validFields validInfo)
+day4Pt1 = sol validFields
+day4Pt2 = sol (both validFields validInfo)

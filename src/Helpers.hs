@@ -11,6 +11,8 @@ module Helpers (
     groupLines,
     replace,
     counter,
+    both,
+    is,
     getGroups
 ) where
 
@@ -44,6 +46,12 @@ groupLines = map lines . splitOn "\n\n"
 -- for problems like airplane seats
 getGroups :: [Char] -> [[Char]]
 getGroups = map (filter (/= '\n')) . splitOn "\n\n"
+
+both :: (a -> Bool) -> (a -> Bool) -> a -> Bool
+both a b = liftA2 (&&) a b 
+
+is :: Eq b => (a -> b) -> b -> a -> Bool
+is f b a = (f a == b)
 
 aocGreeter :: String
 aocGreeter = "Merry chrimbus!!!"

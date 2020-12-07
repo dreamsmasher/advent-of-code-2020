@@ -1,11 +1,11 @@
 module Solutions.Day6 where
 
+import Data.Map (Map)
 import qualified Data.Map as M
-import Control.Arrow
-import Data.List.Split
-import Helpers
+import Data.List.Split ( splitOn )
+import Helpers ( (>>>), counter )
 
-getIntersections :: (String -> M.Map Char Int) -> String -> Int
+getIntersections :: (String -> Map Char Int) -> String -> Int
 getIntersections f = splitOn "\n\n" >>> map f >>> foldr ((+) . M.size) 0
 
 day6Pt1 :: String -> Int
